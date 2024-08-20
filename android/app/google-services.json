@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449902912650",
+    "project_id": "xylem-e74c5",
+    "storage_bucket": "xylem-e74c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449902912650:android:134ea00ebc8a3082c1b973",
+        "android_client_info": {
+          "package_name": "com.firstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449902912650-qeev4o34cj1vhqpl64f99shfs1oatbgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2XkvzMh8OIDNIHdm9P5cULMSKwkfv0rI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449902912650-qeev4o34cj1vhqpl64f99shfs1oatbgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
