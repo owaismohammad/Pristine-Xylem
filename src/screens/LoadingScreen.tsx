@@ -2,7 +2,7 @@
 import React , {useRef, useEffect}from 'react';
 import { View, Text, ActivityIndicator, StyleSheet, Image, Animated } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Video from 'react-native-video';
+
 const LoadingScreen = () => {
   const fadeAnim = useRef(new Animated.Value(1)).current; 
 
@@ -41,7 +41,7 @@ const LoadingScreen = () => {
 {/* 
        <Text style={styles.HeadingPris}>Pristine</Text> */}
        <Image
-          source={require('/home/mohammad-owais/Android/AppMern/src/images/Pristine-removebg-preview.png')} // Adjust path if needed
+          source={require('../images/Pristine-removebg-preview.png')} // Adjust path if needed
           style={styles.gif}
        />
      </View>

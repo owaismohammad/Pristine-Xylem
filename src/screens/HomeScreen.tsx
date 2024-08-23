@@ -51,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <ImagePicker onPrediction={handlePrediction} />
    
-         {prediction === 1 && (
+         {prediction === 0 && (
           <Modal
             visible={isModalVisible}
             transparent={true}
@@ -62,7 +62,7 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.modalContainer}>
               <View style={styles.modalContent}>
                 <LottieView
-                  source={require('/home/mohammad-owais/Android/AppMern/src/images/clean.json')} // Replace with your Lottie animation file
+                  source={require('../images/cleanfinal.json')} // Replace with your Lottie animation file
                   autoPlay
                   loop
                   style={styles.lottie}
@@ -83,7 +83,7 @@ const HomeScreen = ({ navigation }) => {
    
 
       {/* Conditionally Render Modal for Prediction = 1 */}
-       {prediction === 0 && (
+       {prediction === 1 && (
           <Modal
             visible={isModalVisible}
             transparent={true}
@@ -95,7 +95,7 @@ const HomeScreen = ({ navigation }) => {
               <View style={styles.modalContent}>
                 <LottieView
                 //  source={require('/home/mohammad-owais/Android/AppMern/src/images/Animation - 1724047948316.json')} 
-                  source={require('/home/mohammad-owais/Android/AppMern/src/images/bottle.json')} // 
+                  source={require('../images/uncleanfinal.json')} // 
                   autoPlay
                   loop
                   style={styles.lottie}
@@ -195,10 +195,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   modalContent: {
+    top:0,
     width: 300,
+    height:340,
     padding: 20,
     backgroundColor: '#fff',
     borderRadius: 10,
+    borderWidth:2,
+    borderColor:'#04053fc4',
     alignItems: 'center',
   },
   modalText: {

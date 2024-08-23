@@ -127,11 +127,11 @@ const App = () => {
             let iconSource;
 
             if (route.name === 'Home') {
-              iconSource = require('/home/mohammad-owais/Android/AppMern/src/images/home.png'); // Path to your Home icon
+              iconSource = require('./src/images/home.png'); // Path to your Home icon
             } else if (route.name === 'You') {
-              iconSource = require('/home/mohammad-owais/Android/AppMern/src/images/user.png'); // Path to your Details icon
+              iconSource = require('./src/images/user.png'); // Path to your Details icon
             } else if (route.name=== 'News') {
-              iconSource= require('/home/mohammad-owais/Android/AppMern/src/images/newspaper.png')
+              iconSource= require('./src/images/newspaper.png')
             }
 
             return <Image source={iconSource} style={[styles.icon, { tintColor: color }]} />;

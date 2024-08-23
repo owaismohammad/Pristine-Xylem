@@ -9,7 +9,7 @@ const HeaderComponent = () => {
       <Text style={styles.title}>Pristine</Text>
       <Text style={styles.buttonText}>where purity meets precision</Text>
       <Image
-        source={require('/home/mohammad-owais/Android/AppMern/src/images/Pristine-removebg-preview.png')} // Replace with your logo path
+        source={require('../images/Pristine-removebg-preview.png')} // Replace with your logo path
         style={styles.logo}
         resizeMode="contain"
       />

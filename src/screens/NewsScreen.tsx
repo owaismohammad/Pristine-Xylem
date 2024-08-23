@@ -203,7 +203,7 @@ const NewsScreen = ({ navigation }) => {
             <Text style={styles.title}>News</Text>
             <Text style={styles.buttonText}>From The Depths Of Atlantis</Text> 
             <Image
-        source={require('/home/mohammad-owais/Android/AppMern/src/images/news.png')} // Replace with your logo path
+        source={require('../images/news.png')} // Replace with your logo path
         style={styles.logo}
         resizeMode="contain"
       />   
@@ -333,4 +333,3 @@ const styles = StyleSheet.create({
   export default NewsScreen;
   
 
-export default NewsScreen;

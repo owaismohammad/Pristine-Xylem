@@ -90,7 +90,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
 
         <Text style={styles.HeadingPris}>Pristine</Text>
         <Image
-           source={require('/home/mohammad-owais/Android/AppMern/src/images/drop.png')} // Adjust path if needed
+           source={require('../images/drop.png')} // Adjust path if needed
            style={styles.gif}
         />
       </View>

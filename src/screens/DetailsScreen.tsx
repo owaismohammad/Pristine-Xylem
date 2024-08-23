@@ -42,7 +42,7 @@ const UserProfileScreen = () => {
     <View style={styles.container}>
       <YStack alignItems="center" marginBottom={30}>
         <Image
-          source={require('/home/mohammad-owais/Android/AppMern/src/images/Pristine-removebg-preview.png')} // Replace with your icon path
+          source={require('../images/Pristine-removebg-preview.png')} // Replace with your icon path
           style={styles.profileIcon}
         />
         <Text style={styles.name}>{userData.name}</Text>

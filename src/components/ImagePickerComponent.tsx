@@ -147,7 +147,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
             <Image source={{ uri: imageUri }} style={styles.image} />
             <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteImage}>
             <Image
-                source={require('/home/mohammad-owais/Android/AppMern/src/images/bin.png')} // Replace with your delete icon path
+                source={require('../images/bin.png')} // Replace with your delete icon path
                 style={styles.deleteIcon}
               />
             </TouchableOpacity>
@@ -159,13 +159,13 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
       <View style={styles.inside}>
       <TouchableOpacity style={styles.button} onPress={handleSelectImage}>
       <Image
-                source={require('/home/mohammad-owais/Android/AppMern/src/images/photo-and-camera.png')} // Replace with your delete icon path
+                source={require('../images/photo-and-camera.png')} // Replace with your delete icon path
                 style={styles.deleteIcon}
               />
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
       <Image
-        source={require('/home/mohammad-owais/Android/AppMern/src/images/camera.png')} // Replace with your delete icon path
+        source={require('../images/camera.png')} // Replace with your delete icon path
         style={styles.deleteIcon}
               />
       </TouchableOpacity>
