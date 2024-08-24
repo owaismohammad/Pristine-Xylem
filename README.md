@@ -1,6 +1,6 @@
 # Pristine Xylem 🌊
 
-Pristine Xylem is a web application designed to assess the quality of water images by using a machine learning model to classify them as clean or unclean. It also provides user authentication functionality with MongoDB and JWT.
+Pristine Xylem is a React Native application designed to assess the quality of water images by using a machine learning model to classify them as clean or unclean. It also provides user authentication functionality with MongoDB and JWT.
 
 ## 🚀 Features
 
