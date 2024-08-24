@@ -12,6 +12,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
   const [imageUri, setImageUri] = useState<string | null>(null);
   const [prediction, setPrediction]=useState(false)
   const [modalVisible, setModalVisible] = useState(false);
+  const [isLoading, setIsLoading]=useState(false)
   const handleSelectImage = () => {
     launchImageLibrary({ mediaType: 'photo', quality: 1 }, (response) => {
       if (response.didCancel) {
@@ -50,6 +51,21 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
     setImageUri(null); // Clear the image URI
   };
 
+  const test = async ()=>{
+    const testData={
+      "name":"Mohammad Owais",
+      "age":20
+    }
+    try{
+      const response =await axios.post("https://pristine-ml.onrender.com/test",testData )
+      console.log(response)
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
+
   const handleUploadImage = async () => {
     if (!imageUri) {
  
@@ -80,7 +96,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
         return 'application/octet-stream'; // Default MIME type for unknown formats
     }
   };
-
+  setIsLoading(true)
   const imageType=getImageType(imageUri)
     const formData = new FormData();
     formData.append('file', {
@@ -89,21 +105,11 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
       name: `upload.${imageUri.split('.').pop()}`, // provide a suitable name for the image
     });
 
-    // const testData={
-    //   "name":"Mohammad Owais",
-    //   "age":20
-    // }
-    // try{
-    //   const response =await axios.post("http://192.168.63.231:8080/test",testData )
-    //   console.log(response)
-    // }
-    // catch(error){
-    //   console.log(error)
-    // }
+    
     
     
     try {
-      const response = await axios.post("http://192.168.63.231:8080/upload", formData, {
+      const response = await axios.post("https://pristine-ml.onrender.com/upload", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -135,6 +141,8 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
         text1: 'An error occurred while uploading the image',
      
       });
+    }finally{
+      setIsLoading(false)
     }
   };
 
@@ -175,6 +183,22 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
       <Text style={styles.buttonNewText}>Check Purity</Text>
      
       </TouchableOpacity>
+      <Modal
+        visible={isLoading}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsLoading(false)}
+      >
+        <View style={styles.modalContainer}>
+          <LottieView
+            source={require('../images/cleanfinal.json')} // Replace with your loading animation path
+            autoPlay
+            loop
+            style={styles.lottie}
+          />
+        
+        </View>
+      </Modal>
     </View>
   );
 };

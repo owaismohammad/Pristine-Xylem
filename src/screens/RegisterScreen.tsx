@@ -1,10 +1,11 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { Modal, StyleSheet, View } from 'react-native';
 import { Text, Input, Button, Image } from 'tamagui';
 import { useNavigation } from '@react-navigation/native';
 import { AuthNavigationProp } from '../../type';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
+import LottieView from 'lottie-react-native';
 interface RegisterScreenProps {
   onRegister: () => void;
 }
@@ -14,6 +15,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
   const [email, setEmail] = React.useState('');
   const [mobile, setMobile] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [isLoading, setIsLoading]=useState(false)
   const navigation = useNavigation<AuthNavigationProp>();
 
   const handleRegister = async () => {
@@ -24,6 +26,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
       mobile:mobile,
       password:password
     }
+    setIsLoading(true)
     if (!name || !email || !mobile || !password) {
       Toast.show({
         type: 'error',
@@ -34,7 +37,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
     }
     navigation.navigate('Login')
     try {
-      const response = await axios.post("http://192.168.63.231:5001/register", userData);
+      const response = await axios.post("https://pristine-backend-deploy.onrender.com/register", userData);
       console.log(response.data);
 
      Toast.show({
@@ -50,6 +53,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
         // text2: `Welcome ${userData.name}`,
       });
       console.error("Axios error:", error);
+    }finally{
+      setIsLoading(false)
     }
     // onRegister(); // Update the state in App.tsx to navigate to HomeScreen
   };
@@ -95,6 +100,22 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
       <Button onPress={handleRegister} style={styles.button}>
         <Text style={styles.buttonText}>SignUp</Text>
       </Button>
+      <Modal
+        visible={isLoading}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsLoading(false)}
+      >
+        <View style={styles.modalContainer}>
+          <LottieView
+            source={require('../images/cleanfinal.json')} // Replace with your loading animation path
+            autoPlay
+            loop
+            style={styles.lottie}
+          />
+        
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -174,5 +195,15 @@ signUp:{
   bottom:140,
   left:100,
   fontSize:30
-}
+},
+modalContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(0,0,0,0.5)',
+},
+lottie: {
+  width: 200,
+  height: 200,
+},
 });

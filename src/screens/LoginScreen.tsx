@@ -1,4 +1,4 @@
-import { StyleSheet,  View ,Image, Alert} from 'react-native'
+import { StyleSheet,  View ,Image, Alert, Modal} from 'react-native'
 import { Text, Stack, Input, YStack, Button } from 'tamagui'
 import React, {useEffect, useState} from 'react'
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,20 +8,23 @@ import RegisterScreen from './RegisterScreen';
 import Toast from 'react-native-toast-message';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import LottieView from 'lottie-react-native';
 interface LoginScreenProps {
   onLogin: () => void;
 }
 const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading]=useState(false)
   const navigation = useNavigation<AuthNavigationProp>();
-
+  
   const handleLogin = () => {
     
     const userData={
       email:email, 
       password:password
     }
+    setIsLoading(true)
     if (!email || !password) {
       Toast.show({
         type: 'error',
@@ -32,7 +35,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
     }
     try{
       
-    axios.post("http://192.168.63.231:5001/login-user", userData).then(res=>{
+    axios.post("https://pristine-backend-deploy.onrender.com/login-user", userData).then(res=>{
       console.log(email, password)
       console.log(res.data);
       if (res.data.status == 'ok') {
@@ -55,6 +58,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
     
     }catch(error){
       console.log(error)
+    }finally{
+      setIsLoading(false)
     }
   };
   
@@ -123,11 +128,28 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
       >
         <Text style={styles.registerButtonText}>Sign Up!</Text>
       </Button>
+     
       </View>
         <LinearGradient
       colors={['#ffffff', '#8688ff']} // Colors from top-left to bottom-right
       style={styles.container}
     />
+     <Modal
+        visible={isLoading}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsLoading(false)}
+      >
+        <View style={styles.modalContainer}>
+          <LottieView
+            source={require('../images/cleanfinal.json')} // Replace with your loading animation path
+            autoPlay
+            loop
+            style={styles.lottie}
+          />
+        
+        </View>
+      </Modal>
     </View>
    
     </>
@@ -228,5 +250,15 @@ const styles = StyleSheet.create({
   buttonContainer:{
     right:90,
     flexDirection:'row'
-  }
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  lottie: {
+    width: 200,
+    height: 200,
+  },
 })

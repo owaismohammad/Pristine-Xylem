@@ -5,24 +5,7 @@ import NewsHeading from '../components/NewsHeading';
 
 // Example data for the FlatLists
 const exampleDataGeneral = [
-    {
-      id: '1',
-      details: 'Preserving Paradise: Goa\'s urgent call for water conservation',
-      imageUrl: 'https://admin-cires.colorado.edu/sites/default/files/2024-04/Timeplase%20camera%20install-Antarctica-Banwell-2019.jpeg',
-      link: 'https://www.gomantaktimes.com/opinion/preserving-paradise-goas-urgent-call-for-water-conservation',
-    },
-    {
-      id: '2',
-      details: '\'Save 600 litres per day with small steps\': Bengaluru doctor\'s water saving tips go viral',
-      imageUrl: 'https://cmp.smu.edu.sg/sites/cmp.smu.edu.sg/files/styles/large/public/articles/Washing_hands.jpg?itok=4MyNX_XH',
-      link: 'https://www.timesofindia.indiatimes.com/city/bengaluru/save-600-liters-per-day-with-small-steps-bengaluru-doctors-water-saving-tips-go-viral/articleshow/108615141.cms',
-    },
-    {
-      id: '3',
-      details: 'Coimbatore to get water from Nilgiris to tide over scarcity',
-      imageUrl: 'https://www.usnews.com/object/image/0000018e-d3ab-d4e4-a39e-f7bffb6c0000/gettyimages-726771493-1.jpg?update-time=1712948296033&size=responsive970',
-      link: 'https://timesofindia.indiatimes.com/city/coimbatore/coimbatore-to-get-water-from-nilgiris-to-tide-over-scarcity/articleshow/109741724.cms',
-    },
+   
     {
       id: '4',
       details: 'Delhi Jal Board sets target of 1,000 MGD water supply during summer',
@@ -70,6 +53,24 @@ const exampleDataGeneral = [
       details: 'Improving access to water, sanitation and hygiene can save 1.4 million lives per year, says new WHO report',
       imageUrl: 'https://th.bing.com/th/id/OIP.ORgzmjJEDYgKXi1tCHVwbQAAAA?pid=ImgDetMain',
       link: 'https://st.adda247.com/https://currentaffairs.adda247.com/wp-content/uploads/multisite/sites/5/2023/05/23114251/India-Israel-Relations.jpg',
+    },
+    {
+      id: '1',
+      details: 'Preserving Paradise: Goa\'s urgent call for water conservation',
+      imageUrl: 'https://admin-cires.colorado.edu/sites/default/files/2024-04/Timeplase%20camera%20install-Antarctica-Banwell-2019.jpeg',
+      link: 'https://www.gomantaktimes.com/opinion/preserving-paradise-goas-urgent-call-for-water-conservation',
+    },
+    {
+      id: '2',
+      details: '\'Save 600 litres per day with small steps\': Bengaluru doctor\'s water saving tips go viral',
+      imageUrl: 'https://cmp.smu.edu.sg/sites/cmp.smu.edu.sg/files/styles/large/public/articles/Washing_hands.jpg?itok=4MyNX_XH',
+      link: 'https://www.timesofindia.indiatimes.com/city/bengaluru/save-600-liters-per-day-with-small-steps-bengaluru-doctors-water-saving-tips-go-viral/articleshow/108615141.cms',
+    },
+    {
+      id: '3',
+      details: 'Coimbatore to get water from Nilgiris to tide over scarcity',
+      imageUrl: 'https://www.usnews.com/object/image/0000018e-d3ab-d4e4-a39e-f7bffb6c0000/gettyimages-726771493-1.jpg?update-time=1712948296033&size=responsive970',
+      link: 'https://timesofindia.indiatimes.com/city/coimbatore/coimbatore-to-get-water-from-nilgiris-to-tide-over-scarcity/articleshow/109741724.cms',
     },
   ];
 const exampleDataTech = [

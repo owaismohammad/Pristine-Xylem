@@ -12,7 +12,7 @@ const HomeScreen = ({ navigation }) => {
   const [prediction, setPrediction] = useState<number | null>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const bounceAnimation = useRef(new Animated.Value(1)).current;
-
+  const [isLoading, setIsLoading]=useState(false)
 
   const handlePrediction = (predictedValue: number) => {
     setPrediction(predictedValue);
@@ -23,16 +23,24 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const getData=async ()=>{
-    const token=await AsyncStorage.getItem('token')
-    // console.log(token)
-    axios.post('http://192.168.63.231:5001/userdata',{token:token}).then(
-      res=> {
-      // console.log(res.data)
-      setUserData(res.data.data)
-       // Assume the first part is the first name
-  
+    try {
+      const token = await AsyncStorage.getItem('token');
+      if (!token) {
+        console.error('No token found');
+        return;
+      }
+      
+      setIsLoading(true);
+
+      const response = await axios.post('https://pristine-backend-deploy.onrender.com/userdata', { token });
+      setUserData(response.data.data);
+
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      // Handle error (e.g., show a toast or alert)
+    } finally {
+      setIsLoading(false);
     }
-    )
   }
   useEffect(()=>{
     getData();
@@ -62,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.modalContainer}>
               <View style={styles.modalContent}>
                 <LottieView
-                  source={require('../images/cleanfinal.json')} // Replace with your Lottie animation file
+                  source={require('../images/bottle.json')} // Replace with your Lottie animation file
                   autoPlay
                   loop
                   style={styles.lottie}
@@ -126,6 +134,22 @@ const HomeScreen = ({ navigation }) => {
             drinking water for communities worldwide.
           </Text>
         </View>
+        <Modal
+        visible={isLoading}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsLoading(false)}
+      >
+        <View style={styles.modalContainerLoading}>
+          <LottieView
+            source={require('../images/cleanfinal.json')} // Replace with your loading animation path
+            autoPlay
+            loop
+            style={styles.lottieLoading}
+          />
+        
+        </View>
+      </Modal>
       </ScrollView>
     </View>
   );
@@ -227,6 +251,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   lottie: {
+    width: 200,
+    height: 200,
+  },
+  modalContainerLoading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  lottieLoading: {
     width: 200,
     height: 200,
   },

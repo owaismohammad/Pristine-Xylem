@@ -1,21 +1,26 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import LottieView from 'lottie-react-native';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, Modal } from 'react-native';
 import { YStack, Button } from 'tamagui';
 
 const UserProfileScreen = () => {
   const navigation = useNavigation();
   const [userData, setUserData] = useState({ name: '', email: '', mobile: '' });
-
+  const [isLoading, setIsLoading]=useState(false)
   const getData = async () => {
+
+    setIsLoading(true)
     const token = await AsyncStorage.getItem('token');
     try {
-      const response = await axios.post('http://192.168.63.231:5001/userdata', { token });
+      const response = await axios.post('https://pristine-backend-deploy.onrender.com/userdata', { token });
       setUserData(response.data.data);
     } catch (error) {
       console.error('Error fetching user data:', error);
+    }finally{
+      setIsLoading(false)
     }
   };
 
@@ -63,8 +68,24 @@ const UserProfileScreen = () => {
         </View>
       </View>
 
-    
       <Button onPress={signOut} style={styles.signOutButton}>Sign Out</Button>
+
+      <Modal
+        visible={isLoading}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsLoading(false)}
+      >
+        <View style={styles.modalContainer}>
+          <LottieView
+            source={require('../images/cleanfinal.json')} // Replace with your loading animation path
+            autoPlay
+            loop
+            style={styles.lottie}
+          />
+        
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -137,6 +158,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 6,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  lottie: {
+    width: 200,
+    height: 200,
   },
 });
 
