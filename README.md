@@ -1,79 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Pristine Xylem 🌊
 
-# Getting Started
+Pristine Xylem is a web application designed to assess the quality of water images by using a machine learning model to classify them as clean or unclean. It also provides user authentication functionality with MongoDB and JWT.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 🚀 Features
 
-## Step 1: Start the Metro Server
+- **User Registration and Login**: Secure user registration and login functionality 🔐.
+- **Machine Learning Model**: Classifies images of water as clean or unclean 💧.
+- **REST API**: Provides endpoints for user authentication and data retrieval 📡.
+- **Deployment**: The backend is deployed on Render for accessibility 🌐.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🔧 Technologies Used
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Node.js**: JavaScript runtime used for the backend 🟩.
+- **Express.js**: Web framework for Node.js 🚂.
+- **MongoDB**: NoSQL database for storing user data 📚.
+- **Mongoose**: ODM (Object Data Modeling) library for MongoDB 🏗️.
+- **Bcrypt.js**: Library for hashing passwords 🔒.
+- **JWT (JSON Web Token)**: For secure user authentication 🎟️.
+- **Render**: Platform used for deploying the backend 🚀.
 
-```bash
-# using npm
-npm start
+## 📦 Installation
 
-# OR using Yarn
-yarn start
-```
+To set up the backend locally, follow these steps:
 
-## Step 2: Start your Application
+1. **Clone the repository:**
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+    ```bash
+    git clone https://github.com/owaismohammad/Pristine-Xylem.git
+    cd Pristine-Xylem
+    ```
 
-### For Android
+2. **Install dependencies:**
 
-```bash
-# using npm
-npm run android
+    ```bash
+    npm install
+    ```
 
-# OR using Yarn
-yarn android
-```
+3. **Configuration:**
 
-### For iOS
+    Update the `mongoUrl` and `JWT_SECRET` in the `server.js` file with your MongoDB connection string and JWT secret key 🔑.
 
-```bash
-# using npm
-npm run ios
+4. **Run the server:**
 
-# OR using Yarn
-yarn ios
-```
+    ```bash
+    npm start
+    ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+    The server will start on port `5001` 🌟.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## 🔑 API Endpoints
 
-## Step 3: Modifying your App
+- **GET /**: Returns a status message indicating the server is running 🟢.
+- **POST /register**: Registers a new user. Requires `name`, `email`, `mobile`, and `password` in the request body 📝.
+- **POST /login-user**: Authenticates a user. Requires `email` and `password` in the request body 🔑.
+- **POST /userdata**: Retrieves user data. Requires a JWT token in the request body 🔍.
 
-Now that you have successfully run the app, let's modify it.
+## 🛠️ Dependencies
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+This project uses the following dependencies:
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+- `express`: ^4.17.3
+- `mongoose`: ^6.0.12
+- `cors`: ^2.8.5
+- `jsonwebtoken`: ^8.5.1
+- `multer`: ^1.4.3
+- `bcryptjs`: ^2.4.3
 
-## Congratulations! :tada:
+## 🔒 Security
 
-You've successfully run and modified your React Native App. :partying_face:
+- Ensure that your JWT secret key (`JWT_SECRET`) is kept confidential and not exposed in public repositories 🔒.
+- Regularly update dependencies to mitigate security vulnerabilities 🔄.
 
-### Now what?
+## 📄 License
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+This project is licensed under the [MIT License](LICENSE) 📜.
 
-# Troubleshooting
+## 💬 Contact
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+For any questions or feedback, please reach out to [owaismohammad](mailto:owaismohammad@example.com) 📧.
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Feel free to contribute to this project or provide feedback. Your input is valuable! 🌟
