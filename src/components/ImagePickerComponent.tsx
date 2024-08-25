@@ -57,7 +57,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
       "age":20
     }
     try{
-      const response =await axios.post("`https://pristine-ml.onrender.com`/test",testData )
+      const response =await axios.post("/test",testData )
       console.log(response)
     }
     catch(error){
