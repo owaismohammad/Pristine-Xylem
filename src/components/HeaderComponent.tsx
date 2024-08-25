@@ -22,41 +22,40 @@ const HeaderComponent = () => {
 
 
 const styles = StyleSheet.create({
-    headerContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      
-      height:110,
-      paddingTop:30,
-      paddingHorizontal: 20,
-      backgroundColor: '#fff', // Change to your preferred color
-      borderBottomWidth: 1,
-      borderBottomColor: '#ddd',
-    },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     
-    title: {
-      // left:-80,
-      top:-20,
-      fontSize: 60,
-      fontWeight: 'bold',
-      color: '#04053fc4',
-    },
-    buttonText: {
-      top:15,
-      right:160,
-      fontSize: 16,
-      color: '#04053fc4',
-      // fontWeight:'bold'
-    },
-    logo: {
-      top:-15,
-      marginHorizontal:-50,
-      right:110,
-      width: 120, // Adjust the size based on your logo
-      height: 152, // Adjust the size based on your logo
-      tintColor:'#04053fc4'
-    },
+    height:110,
+    paddingTop:30,
+    paddingHorizontal: 20,
+    backgroundColor: '#fff', // Change to your preferred color
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
   
+  title: {
+    // left:-80,
+    top:-20,
+    fontSize: 60,
+    fontWeight: 'bold',
+    color: '#04053fc4',
+  },
+  buttonText: {
+    top:15,
+    right:160,
+    fontSize: 16,
+    color: '#04053fc4',
+    // fontWeight:'bold'
+  },
+  logo: {
+    top:-15,
+    marginHorizontal:-50,
+    right:110,
+    width: 120, // Adjust the size based on your logo
+    height: 152, // Adjust the size based on your logo
+    tintColor:'#04053fc4'
+  },
   });
   export default HeaderComponent;

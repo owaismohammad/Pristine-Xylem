@@ -5,7 +5,7 @@ import LottieView from 'lottie-react-native';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Image, Text, Modal } from 'react-native';
 import { YStack, Button } from 'tamagui';
-
+import { API_URL } from 'react-native-dotenv';
 const UserProfileScreen = () => {
   const navigation = useNavigation();
   const [userData, setUserData] = useState({ name: '', email: '', mobile: '' });
@@ -15,7 +15,7 @@ const UserProfileScreen = () => {
     setIsLoading(true)
     const token = await AsyncStorage.getItem('token');
     try {
-      const response = await axios.post('https://pristine-backend-deploy.onrender.com/userdata', { token });
+      const response = await axios.post(`${API_URL}/userData`, { token });
       setUserData(response.data.data);
     } catch (error) {
       console.error('Error fetching user data:', error);

@@ -9,6 +9,7 @@ import Toast from 'react-native-toast-message';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LottieView from 'lottie-react-native';
+import { API_URL } from 'react-native-dotenv';
 interface LoginScreenProps {
   onLogin: () => void;
 }
@@ -19,12 +20,12 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
   const navigation = useNavigation<AuthNavigationProp>();
   
   const handleLogin = () => {
-    
+    setIsLoading(true)
     const userData={
       email:email, 
       password:password
     }
-    setIsLoading(true)
+    
     if (!email || !password) {
       Toast.show({
         type: 'error',
@@ -35,7 +36,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
     }
     try{
       
-    axios.post("https://pristine-backend-deploy.onrender.com/login-user", userData).then(res=>{
+    axios.post(`${API_URL}/login-user`, userData).then(res=>{
       console.log(email, password)
       console.log(res.data);
       if (res.data.status == 'ok') {

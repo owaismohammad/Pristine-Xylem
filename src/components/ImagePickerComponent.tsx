@@ -4,7 +4,7 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
 import LottieView from 'lottie-react-native';
-
+import { ML_URL } from 'react-native-dotenv';
 type ImagePickerComponentProps = {
   onPrediction: (prediction: number) => void;
 };
@@ -57,7 +57,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
       "age":20
     }
     try{
-      const response =await axios.post("https://pristine-ml.onrender.com/test",testData )
+      const response =await axios.post("`https://pristine-ml.onrender.com`/test",testData )
       console.log(response)
     }
     catch(error){
@@ -109,7 +109,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({ onPredictio
     
     
     try {
-      const response = await axios.post("https://pristine-ml.onrender.com/upload", formData, {
+      const response = await axios.post(`${ML_URL}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

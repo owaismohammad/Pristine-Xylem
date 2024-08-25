@@ -5,7 +5,7 @@ import ImagePicker from '../components/ImagePickerComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import LottieView from 'lottie-react-native';
-
+import { API_URL } from 'react-native-dotenv';
 const HomeScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
   const [userData, setUserData]=useState("")
@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
       
       setIsLoading(true);
 
-      const response = await axios.post('https://pristine-backend-deploy.onrender.com/userdata', { token });
+      const response = await axios.post(`${API_URL}/userData`, { token });
       setUserData(response.data.data);
 
     } catch (error) {

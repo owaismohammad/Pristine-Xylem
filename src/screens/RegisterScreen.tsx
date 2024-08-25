@@ -6,6 +6,7 @@ import { AuthNavigationProp } from '../../type';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
 import LottieView from 'lottie-react-native';
+import { API_URL } from 'react-native-dotenv';
 interface RegisterScreenProps {
   onRegister: () => void;
 }
@@ -37,7 +38,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
     }
     navigation.navigate('Login')
     try {
-      const response = await axios.post("https://pristine-backend-deploy.onrender.com/register", userData);
+      const response = await axios.post(`${API_URL}/register`, userData);
       console.log(response.data);
 
      Toast.show({

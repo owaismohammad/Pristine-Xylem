@@ -16,6 +16,7 @@ export type MainTabParamList = {
   You: undefined;
 };
 
+
 // Type for the AuthStack Navigator's navigation prop
 export type AuthNavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 
