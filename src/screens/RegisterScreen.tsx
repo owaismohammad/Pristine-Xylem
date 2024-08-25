@@ -27,7 +27,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
       mobile:mobile,
       password:password
     }
-    setIsLoading(true)
+   
     if (!name || !email || !mobile || !password) {
       Toast.show({
         type: 'error',
@@ -36,22 +36,24 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ onRegister }) => {
       });
       return;
     }
+    setIsLoading(true)
     navigation.navigate('Login')
     try {
+     
       const response = await axios.post(`${API_URL}/register`, userData);
       console.log(response.data);
 
      Toast.show({
       type: 'success',
       text1: 'Registered Successful',
-      // text2: `Welcome ${userData.name}`,
+      text2: `Login to continue`,
     });
       navigation.navigate('Login')
     } catch (error) {
       Toast.show({
         type: 'error',
-        text1: 'RError ',
-        // text2: `Welcome ${userData.name}`,
+        text1: 'Unable to register ',
+        text2: `Try Again Later!`,
       });
       console.error("Axios error:", error);
     }finally{

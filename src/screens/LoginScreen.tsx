@@ -20,7 +20,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
   const navigation = useNavigation<AuthNavigationProp>();
   
   const handleLogin = () => {
-    setIsLoading(true)
+ 
     const userData={
       email:email, 
       password:password
@@ -35,10 +35,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
       return;
     }
     try{
-      
+      setIsLoading(true)
     axios.post(`${API_URL}/login-user`, userData).then(res=>{
       console.log(email, password)
-      console.log(res.data);
+     
       if (res.data.status == 'ok') {
         console.log(email,password)
      
@@ -52,13 +52,24 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) =>  {
         text2: `Welcome back! ${userData.name}`,
       });
       }
+      else{
+        Toast.show({
+          type: 'error',
+          text1: 'Login Unsuccessful',
+          text2: `User data doesn't exist!`,
+        });
+      }
     });
     // Handle login logic here
     // console.log('Email:', email);
     // console.log('Password:', password);
     
     }catch(error){
-      console.log(error)
+      Toast.show({
+        type: 'error',
+        text1: 'Login Unsuccessful',
+        text2: `Error Logging You In!`,
+      });
     }finally{
       setIsLoading(false)
     }
